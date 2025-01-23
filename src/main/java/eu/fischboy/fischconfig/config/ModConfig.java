@@ -57,7 +57,7 @@ public class ModConfig extends Config {
 
     // Wings
     @Info(text = "Buggy on Hypixel", type = InfoType.ERROR, category = "Cosmetics", subcategory = "Wings")
-    public static boolean ignored;
+    public static boolean ignored1;
 
     @Switch(name = "Enable Wings", category = "Cosmetics", subcategory = "Wings")
     public static boolean enableWings = false;

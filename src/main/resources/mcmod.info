@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "fischconfig",
+    "name": "FischConfig",
+    "description": "An OneConfig Cosmetics system",
+    "version": "${version}",
+    "mcversion": "${mcVersionStr}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "fischboy"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

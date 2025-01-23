@@ -15,10 +15,10 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderWings extends ModelBase {
 
-    private Minecraft mc;
-    private ModelRenderer wing;
-    private ModelRenderer wingTip;
-    private boolean playerUsesFullHeight;
+    private final Minecraft mc;
+    private final ModelRenderer wing;
+    private final ModelRenderer wingTip;
+    private final boolean playerUsesFullHeight;
 
     private final ResourceLocation WINGS_TEXTURE;
 
@@ -77,10 +77,10 @@ public class RenderWings extends ModelBase {
         for (int j = 0; j < 2; ++j) {
             GlStateManager.enableCull();
             float f11 = (System.currentTimeMillis() % 1000) / 1000F * (float) Math.PI * 2.0F;
-            this.wing.rotateAngleX = (float) Math.toRadians(-80F) - (float) Math.cos((double) f11) * 0.2F;
+            this.wing.rotateAngleX = (float) Math.toRadians(-80F) - (float) Math.cos(f11) * 0.2F;
             this.wing.rotateAngleY = (float) Math.toRadians(20F) + (float) Math.sin(f11) * 0.4F;
             this.wing.rotateAngleZ = (float) Math.toRadians(20F);
-            this.wingTip.rotateAngleZ = -((float) (Math.sin((double) (f11 + 2.0F)) + 0.5D)) * 0.75F;
+            this.wingTip.rotateAngleZ = -((float) (Math.sin((f11 + 2.0F)) + 0.5D)) * 0.75F;
             this.wing.render(0.0625F);
             GlStateManager.scale(-1.0F, 1.0F, 1.0F);
 

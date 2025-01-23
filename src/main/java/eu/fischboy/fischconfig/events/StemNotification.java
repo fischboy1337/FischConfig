@@ -22,7 +22,7 @@ import java.util.Set;
 
 public class StemNotification {
     private final Minecraft mc = Minecraft.getMinecraft();
-    private Set<BlockPos> destroyedStems = new HashSet<>();
+    private final Set<BlockPos> destroyedStems = new HashSet<>();
 
     @SubscribeEvent
     public void onBlockBreak(BlockEvent.BreakEvent event) {
@@ -42,9 +42,7 @@ public class StemNotification {
     @SubscribeEvent
     public void onBlockPlaced(BlockEvent.PlaceEvent event) {
         BlockPos pos = event.pos;
-        if (destroyedStems.contains(pos)) {
-            destroyedStems.remove(pos);
-        }
+        destroyedStems.remove(pos);
     }
 
     @SubscribeEvent

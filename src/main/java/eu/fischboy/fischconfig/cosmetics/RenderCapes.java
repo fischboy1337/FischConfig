@@ -1,5 +1,6 @@
 package eu.fischboy.fischconfig.cosmetics;
 
+import cc.polyfrost.oneconfig.config.core.OneColor;
 import eu.fischboy.fischconfig.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -35,12 +36,19 @@ public class RenderCapes implements LayerRenderer<AbstractClientPlayer> {
     @Override
     public void doRenderLayer(AbstractClientPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         if (player.hasPlayerInfo() && !player.isInvisible() && player.isWearing(EnumPlayerModelParts.CAPE)) {
-            if (player.getName().equals(Minecraft.getMinecraft().getSession().getUsername())) {
+            if (player.getName().equals(Minecraft.getMinecraft().getSession().getUsername()) && ModConfig.enableCape) {
                 handleTexture();
                 this.playerRenderer.bindTexture(CAPE_TEXTURE);
 
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0.0F, 0.0F, 0.125F);
+
+                if (ModConfig.capeDesign == 2) {
+                    OneColor color = ModConfig.capeColor;
+                    GlStateManager.color(color.getRed(), color.getGreen(), color.getBlue(), 1.0F);
+                }else {
+                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                }
 
                 float waveTime = ageInTicks + partialTicks;
                 float waveAmplitude = 4.0F;

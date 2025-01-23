@@ -1,9 +1,6 @@
 package eu.fischboy.fischconfig.cosmetics;
 
-import cc.polyfrost.oneconfig.libs.universal.ChatColor;
-import cc.polyfrost.oneconfig.utils.Notifications;
 import com.mojang.authlib.GameProfile;
-import eu.fischboy.fischconfig.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;

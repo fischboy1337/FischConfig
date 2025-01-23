@@ -1,22 +1,37 @@
-# OneConfigExampleMod
+# FischConfig
 
 ![Powered by OneConfig](https://polyfrost.org/media/branding/badges/badge_1.svg)
-![Compact Powered by OneConfig](https://polyfrost.org/media/branding/badges/badge_2.svg)
-![Minimal Powered by OneConfig](https://polyfrost.org/media/branding/badges/badge_3.svg)
-![Minimal Compact Powered by OneConfig](https://polyfrost.org/media/branding/badges/badge_4.svg)
 
-Example mod implementing OneConfig.
+FischConfig is a Minecraft mod powered  by OneConfig
 
-## How to use
+## Features
 
-- Copy the template either by using GitHub's "Use this template" feature or downloading the repo manually.
-- **Remove the license named "LICENSE-TEMPLATE" and choose a new one.**
-- Refactor the template (specifically, the modid, version and name in the gradle.properties and most of the class names)
-  to a different name.
-- Have fun modding! :D
+- Stem Notifications (Only Notification does not bloock the destroyment)
+- Cosmetics (Capes and Wings)
+- More coming soon...
 
-## Need to update to a newer commit of this template?
+## Installation
 
-Check out these update guides:
-- [Updating to commit `fd8e095`](update-to-fd8e095.md) (most recent update)
-- [Updating to commit `301a6ca`](update-to-301a6ca.md)
+1. Download and install [Minecraft Forge](https://files.minecraftforge.net/).
+2. Download and install [OneConfig](https://github.com/Polyfrost/OneConfig)
+3. Download the latest version of `FischConfig` from the [releases page](https://github.com/fischboy1337/FischConfig/releases).
+4. Place the downloaded `.jar` file in the `mods` folder of your OneConfig direction.
+
+You can configure the mod settings through the in-game GUI. Access the configuration menu by pressing the designated keybinding or through the Minecraft options menu.
+
+## Building from Source
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/fischboy1337/FischConfig.git
+    cd FischConfig
+    ```
+2. Build the project using Gradle:
+    ```sh
+    ./gradlew build
+    ```
+3. The built `.jar` file will be located in the `versions/1.8.9-forge/build/libs` directory.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

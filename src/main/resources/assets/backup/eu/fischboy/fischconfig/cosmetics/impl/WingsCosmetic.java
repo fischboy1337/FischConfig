@@ -1,4 +1,4 @@
-package eu.fischboy.fischconfig.cosmetics;
+package eu.fischboy.fischconfig.cosmetics.impl;
 
 import cc.polyfrost.oneconfig.config.core.OneColor;
 import eu.fischboy.fischconfig.config.ModConfig;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
-public class RenderWings extends ModelBase {
+public class WingsCosmetic extends ModelBase {
 
     private final Minecraft mc;
     private final ModelRenderer wing;
@@ -22,7 +22,7 @@ public class RenderWings extends ModelBase {
 
     private final ResourceLocation WINGS_TEXTURE;
 
-    public RenderWings() {
+    public WingsCosmetic() {
         this.mc = Minecraft.getMinecraft();
         this.playerUsesFullHeight = Loader.isModLoaded("animations");
         WINGS_TEXTURE = new ResourceLocation("cosmetics", "Wings/wings.png");
@@ -47,11 +47,10 @@ public class RenderWings extends ModelBase {
     }
 
     @SubscribeEvent
-    public void onRenderPlayer(RenderPlayerEvent.Post event)
-    {
+    public void onRenderPlayer(RenderPlayerEvent.Post event) {
         EntityPlayer player = event.entityPlayer;
 
-        if (!player.isInvisible() && player == mc.thePlayer && ModConfig.enableWings) {
+        if (!player.isInvisible() && ModConfig.enableWings) {
             renderWings(player, event.partialRenderTick);
         }
     }
@@ -98,8 +97,7 @@ public class RenderWings extends ModelBase {
     private float interpolate(float yaw1, float yaw2, float percent) {
         float f = (yaw1 + (yaw2 - yaw1) * percent) % 360;
 
-        if (f < 0)
-        {
+        if (f < 0) {
             f += 360;
         }
 

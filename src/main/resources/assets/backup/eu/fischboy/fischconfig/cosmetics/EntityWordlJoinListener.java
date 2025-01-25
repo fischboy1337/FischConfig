@@ -2,6 +2,8 @@ package eu.fischboy.fischconfig.cosmetics;
 
 import com.mojang.authlib.GameProfile;
 import eu.fischboy.fischconfig.config.ModConfig;
+import eu.fischboy.fischconfig.cosmetics.impl.CapesCosmetic;
+import eu.fischboy.fischconfig.cosmetics.impl.WingsCosmetic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,23 +20,23 @@ public class EntityWordlJoinListener {
         GameProfile profile = Minecraft.getMinecraft().getSession().getProfile();
         if (event.entity.getPersistentID().equals(profile.getId())) {
             renderCape();
-            renderWings((EntityPlayer) event.entity);
+            renderWings();
         }
     }
 
     private void renderCape() {
         Minecraft.getMinecraft().gameSettings.setModelPartEnabled(EnumPlayerModelParts.CAPE, true);
         for (RenderPlayer render : Minecraft.getMinecraft().getRenderManager().getSkinMap().values()) {
-            render.addLayer(new RenderCapes(render));
+            render.addLayer(new CapesCosmetic(render));
         }
 
     }
 
-    private void renderWings(EntityPlayer player) {
-        if (ModConfig.enableWings && !player.isInvisible() && player == Minecraft.getMinecraft().thePlayer) {
-            MinecraftForge.EVENT_BUS.register(new RenderWings());
+    private void renderWings() {
+        if (ModConfig.enableWings) {
+            MinecraftForge.EVENT_BUS.register(new WingsCosmetic());
         }else {
-            MinecraftForge.EVENT_BUS.unregister(new RenderWings());
+            MinecraftForge.EVENT_BUS.unregister(new WingsCosmetic());
         }
     }
 }

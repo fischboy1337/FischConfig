@@ -1,7 +1,9 @@
-package eu.fischboy.fischconfig.cosmetics;
+package eu.fischboy.fischconfig.newCosmetics.impl.cape;
 
 import cc.polyfrost.oneconfig.config.core.OneColor;
 import eu.fischboy.fischconfig.config.ModConfig;
+import eu.fischboy.fischconfig.newCosmetics.Cosmetic;
+import eu.fischboy.fischconfig.FischMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -12,33 +14,35 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderCapes implements LayerRenderer<AbstractClientPlayer> {
-    private static ResourceLocation CAPE_TEXTURE;
     private final RenderPlayer playerRenderer;
 
     public RenderCapes(RenderPlayer playerRendererIn) {
         this.playerRenderer = playerRendererIn;
     }
 
-    public void handleTexture() {
-        switch (ModConfig.capeDesign) {
-            case 0:
-                CAPE_TEXTURE = new ResourceLocation("cosmetics", "Capes/Classic.png");
-                break;
-            case 1:
-                CAPE_TEXTURE = new ResourceLocation("cosmetics", "Capes/Modern.png");
-                break;
-            case 2:
-                CAPE_TEXTURE = new ResourceLocation("cosmetics", "Capes/CustomColor.png");
-                break;
+    private ResourceLocation getCapeTexture() {
+        if (FischMod.INSTANCE.cosmeticManager == null) {
+            return null;
         }
+
+        Cosmetic cosmetic = FischMod.INSTANCE.cosmeticManager.getCosmeticByName(FischMod.INSTANCE.cosmeticManager.getCurrentCape().getName());
+        return cosmetic != null ? cosmetic.getResource() : null;
     }
 
     @Override
     public void doRenderLayer(AbstractClientPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        if (player.hasPlayerInfo() && !player.isInvisible() && player.isWearing(EnumPlayerModelParts.CAPE)) {
-            if (player.getName().equals(Minecraft.getMinecraft().getSession().getUsername()) && ModConfig.enableCape) {
-                handleTexture();
-                this.playerRenderer.bindTexture(CAPE_TEXTURE);
+        if (!player.getName().equals(Minecraft.getMinecraft().getSession().getUsername())) {
+            return;
+        }
+
+        if (player.hasPlayerInfo() && player.isWearing(EnumPlayerModelParts.CAPE)) {
+            if (ModConfig.enableCape) {
+                ResourceLocation capeTexture = getCapeTexture();
+                if (capeTexture == null) {
+                    return;
+                }
+
+                this.playerRenderer.bindTexture(capeTexture);
 
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0.0F, 0.0F, 0.125F);
@@ -46,7 +50,7 @@ public class RenderCapes implements LayerRenderer<AbstractClientPlayer> {
                 if (ModConfig.capeDesign == 2) {
                     OneColor color = ModConfig.capeColor;
                     GlStateManager.color(color.getRed(), color.getGreen(), color.getBlue(), 1.0F);
-                }else {
+                } else {
                     GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 }
 

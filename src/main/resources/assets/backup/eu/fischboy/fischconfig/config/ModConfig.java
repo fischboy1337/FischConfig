@@ -11,7 +11,7 @@ import eu.fischboy.fischconfig.FischMod;
 public class ModConfig extends Config {
 
     public ModConfig() {
-        super(new Mod("FischConfig", ModType.THIRD_PARTY, "assets/icon.png"), FischMod.NAME + ".json");
+        super(new Mod("FischConfig", ModType.THIRD_PARTY, "assets/fischconfig/icon.png"), FischMod.NAME + ".json");
         initialize();
         addDependency("enableStemActionBar", () -> enableStem);
         addDependency("enableStemChat", () -> enableStem);

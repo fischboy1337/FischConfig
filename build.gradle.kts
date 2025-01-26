@@ -101,6 +101,9 @@ dependencies {
     }
 
     modImplementation("com.mojang:authlib:1.5.25")
+
+    compileOnly("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.28")
 }
 
 tasks {

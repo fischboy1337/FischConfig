@@ -1,7 +1,7 @@
 package eu.fischboy.fischconfig;
 
 import eu.fischboy.fischconfig.config.ModConfig;
-import eu.fischboy.fischconfig.cosmetics.EntityWordlJoinListener;
+import eu.fischboy.fischconfig.events.CosmeticsInitializer;
 import eu.fischboy.fischconfig.events.StemNotification;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +23,6 @@ public class FischMod {
         config = new ModConfig();
 
         MinecraftForge.EVENT_BUS.register(new StemNotification());
-        MinecraftForge.EVENT_BUS.register(new EntityWordlJoinListener());
+        MinecraftForge.EVENT_BUS.register(new CosmeticsInitializer());
     }
 }

@@ -1,5 +1,6 @@
 package eu.fischboy.fischconfig.cosmetics;
 
+import eu.fischboy.fischconfig.newCosmetics.Cosmetic;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

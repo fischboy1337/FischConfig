@@ -1,4 +1,4 @@
-package eu.fischboy.fischconfig.cosmetics;
+package eu.fischboy.fischconfig.newCosmetics.impl.wings;
 
 import cc.polyfrost.oneconfig.config.core.OneColor;
 import eu.fischboy.fischconfig.config.ModConfig;
@@ -25,7 +25,7 @@ public class RenderWings extends ModelBase {
     public RenderWings() {
         this.mc = Minecraft.getMinecraft();
         this.playerUsesFullHeight = Loader.isModLoaded("animations");
-        WINGS_TEXTURE = new ResourceLocation("cosmetics", "Wings/wings.png");
+        WINGS_TEXTURE = new ResourceLocation("fischconfig", "cosmetics/Wings/wings.png");
 
         setTextureOffset("wing.bone", 0, 0);
         setTextureOffset("wing.skin", -10, 8);

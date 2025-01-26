@@ -1,6 +1,6 @@
 package eu.fischboy.fischconfig.cosmetics.impl;
 
-import eu.fischboy.fischconfig.cosmetics.Cosmetic;
+import eu.fischboy.fischconfig.newCosmetics.Cosmetic;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
